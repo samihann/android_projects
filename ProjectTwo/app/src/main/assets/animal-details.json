@@ -1,0 +1,66 @@
+{
+  "Cat": {
+    "randomFact": "A cat can run to the speed of about 30 mph over short distances. This means that a cat can outrun superstar runner Usain Bolt in a 200 meter dash!",
+    "lifespan": "12 – 18 years",
+    "weight": "7.9 – 9.9 lbs",
+    "habitat": "Any Terrestrial Habitat",
+    "endangered": "Not Endangered",
+    "url": "https://en.wikipedia.org/wiki/Cat"
+  },
+  "Leopard": {
+    "randomFact": "Leopards are renowned for their agility. They run up to 58km/h and can leap 6m horizontally and 3m vertically. They are also very strong swimmers.",
+    "lifespan": "12 – 17 years",
+    "weight": "60 - 70 lbs",
+    "habitat": "Tropical forests, Grassland plains, Deserts, and Alpine areas",
+    "endangered": "Yes.",
+    "url": "https://en.wikipedia.org/wiki/Leopard"
+  },
+  "Chimpanzee": {
+    "randomFact": "One of the chimpanzee calls is the \"pant-hoot.\" Each individual has his or her own distinctive pant-hoot, so that the chimp can be identified with precision.",
+    "lifespan": "32 - 39 years",
+    "weight": "100 - 130 lbs",
+    "habitat": "Savanna Woodlands, Grassland-forest mosaics and tropical moist forests",
+    "endangered": "Yes.",
+    "url": "https://en.wikipedia.org/wiki/Chimpanzee"
+  },
+  "Tiger": {
+    "randomFact": "Cubs start learning to hunt at six months of age but stay with their moms until they are about 18 months old.",
+    "lifespan": "8-10 years",
+    "weight": "300 - 400 lbs",
+    "habitat": "Rain forests, Grasslands, Savannas and Mangrove swamps",
+    "endangered": "Yes.",
+    "url": "https://en.wikipedia.org/wiki/Tiger"
+  },
+  "Jellyfish": {
+    "randomFact": "Many jellyfish have bioluminescent organs which emit blue or green light.",
+    "lifespan": "1-3 years. Some are claimed to be immortal.",
+    "weight": "20-400g",
+    "habitat": "Ocean Waters",
+    "endangered": "The vast majority are not endangered",
+    "url": "https://en.wikipedia.org/wiki/Jellyfish"
+  },
+  "Eagle": {
+    "randomFact": "Male bald eagles are smaller than females.",
+    "lifespan": "20 years",
+    "weight": "6.6 – 14 lbs",
+    "habitat": "Estuaries, large lakes, reservoirs, rivers, and some Seacoast",
+    "endangered": "No.",
+    "url": "https://en.wikipedia.org/wiki/Eagle"
+  },
+  "Fox": {
+    "randomFact": "A group of foxes is called a skulk or leash.",
+    "lifespan": "3 – 4 years",
+    "weight": "4.9 – 31 lbs",
+    "habitat": "forested areas, though they are also found in mountains, grasslands and deserts",
+    "endangered": "Not Endangered",
+    "url": "https://en.wikipedia.org/wiki/Fox"
+  },
+  "Highland Cattle": {
+    "randomFact": "Their long hair is actually an unusual double coat of hair- on the outside is the oily outer hair, the longest of any cattle breed, and it is covering a downy undercoat underneath.",
+    "lifespan": "20 years",
+    "weight": "1,800 lbs",
+    "habitat": "elevated grassland",
+    "endangered": "Not Endangered",
+    "url": "https://en.wikipedia.org/wiki/Highland_cattle"
+  }
+}

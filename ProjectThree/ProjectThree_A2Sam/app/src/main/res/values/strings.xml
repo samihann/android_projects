@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ProjectThree_A2-Sam</string>
+    <string-array name="Landmarks">
+        <item>Willis Tower</item>
+        <item>Millennium Park</item>
+        <item>Navy Pier</item>
+        <item>Art Institute of Chicago</item>
+        <item>Grant Park</item>
+        <item>Field Museum of Natural History</item>
+    </string-array>
+    <string-array name="lWebsites">
+        <item>https://www.willistower.com/</item>
+        <item>https://www.choosechicago.com/articles/parks-outdoors/millennium-park-campus/</item>
+        <item>https://navypier.org/</item>
+        <item>https://www.artic.edu/</item>
+        <item>https://www.choosechicago.com/articles/parks-outdoors/explore-chicagos-grant-park/</item>
+        <item>https://www.fieldmuseum.org/</item>
+    </string-array>
+    <string-array name="Restaurants">
+        <item>Portillos</item>
+        <item>Twin Anchors</item>
+        <item>Gibson Bar and Steakhouse</item>
+        <item>Boka</item>
+        <item>Frontera Grill</item>
+        <item>Gene and Georgetti</item>
+    </string-array>
+    <string-array name="rWebsites">
+        <item>https://www.portillos.com/index.html</item>
+        <item>https://www.twinanchorsribs.com/</item>
+        <item>https://www.gibsonssteakhouse.com/</item>
+        <item>https://www.bokachicago.com/</item>
+        <item>https://www.rickbayless.com/restaurants/frontera-grill/</item>
+        <item>https://geneandgeorgetti.com/</item>
+    </string-array>
+</resources>

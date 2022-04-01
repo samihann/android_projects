@@ -1,0 +1,222 @@
+package com.samihann.projectthree_a2_sam;
+
+/***
+ * By Samihan Nandedkar
+ * Project Three
+ * CS 478
+ *
+ * Landmark Activity for A2 application.
+ *
+ *
+ */
+
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+
+public class LandmarkActivity extends AppCompatActivity {
+
+    // Declaring the variables to retrieve the list from resources.
+    public static String[] lList;
+    public static String[] lWebsites;
+
+    // Declaring the frame layout for two fragments.
+    private FrameLayout listFragmentLayout;
+    private FrameLayout webFragmentLayout;
+
+    FragmentManager fragmentManager;
+
+
+    private  LandmarkListFragment landmarkListFragment = new LandmarkListFragment() ;
+    private LandmarkWebsiteFragment websiteFragment = new LandmarkWebsiteFragment();
+    private static final int MATCH_PARENT = LinearLayout.LayoutParams.MATCH_PARENT;
+    private static final String TAG = "LandmarkActivity";
+    private static final String TAG_LANDMARK_LIST_FRAGMENT = "LandmarkListFragment";
+    private static final String TAG_LANDMARK_WEBSITE_FRAGMENT = "WebsiteFragment";
+
+    private ListViewModel mModel ;
+
+    private Context context = null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_landmark);
+
+        // Get the string arrays with the landmark list and websites
+        lList = getResources().getStringArray(R.array.Landmarks);
+        lWebsites = getResources().getStringArray(R.array.lWebsites);
+
+        context = this;
+        // Defining the toolbar for the activity
+        setSupportActionBar(findViewById(R.id.my_toolbar));
+
+        // Get references to the Fragment layouts
+        listFragmentLayout = (FrameLayout) findViewById(R.id.landmark_fragment_container);
+        webFragmentLayout = (FrameLayout) findViewById(R.id.website_fragment_container);
+
+
+        // Get a reference to the SupportFragmentManager instead of original FragmentManager
+        fragmentManager = getSupportFragmentManager();
+
+        // Start a new FragmentTransaction
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+
+        landmarkListFragment = (LandmarkListFragment) fragmentManager.findFragmentByTag(TAG_LANDMARK_LIST_FRAGMENT);
+        websiteFragment = (LandmarkWebsiteFragment) fragmentManager.findFragmentByTag(TAG_LANDMARK_WEBSITE_FRAGMENT);
+
+        if (landmarkListFragment == null){
+            landmarkListFragment = new LandmarkListFragment();
+            fragmentTransaction.replace(R.id.landmark_fragment_container, landmarkListFragment,TAG_LANDMARK_LIST_FRAGMENT);
+            fragmentTransaction.commit();
+        }
+        else{
+            // if fragment was retained, add in the respective container to display the fragment.
+            fragmentTransaction.replace(R.id.landmark_fragment_container, landmarkListFragment, TAG_LANDMARK_LIST_FRAGMENT);
+            fragmentTransaction.commit();
+
+            // check if the webview fragment was also retained.
+            if (websiteFragment == null) {
+
+                websiteFragment = new LandmarkWebsiteFragment();
+
+            }
+            else{
+                //if retained, add the fragment to display
+                if (!websiteFragment.isAdded()) {
+
+                    fragmentTransaction.replace(R.id.website_fragment_container, websiteFragment,TAG_LANDMARK_WEBSITE_FRAGMENT);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    fragmentManager.executePendingTransactions();
+
+                }
+            }
+        }
+
+        //if webview fragment was not created, create.
+        if(websiteFragment == null){
+            websiteFragment = new LandmarkWebsiteFragment();
+        }
+
+        // Add a OnBackStackChangedListener to reset the layout when the back stack changes
+        fragmentManager.addOnBackStackChangedListener(
+                new FragmentManager.OnBackStackChangedListener() {
+                    public void onBackStackChanged() {
+                        setLayout();
+                    }
+                });
+
+
+        mModel = new ViewModelProvider(this).get(ListViewModel.class) ;
+        mModel.getSelectedItem().observe(this, item -> {
+            if (!websiteFragment.isAdded()) {
+                FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction() ;
+
+                fragmentTransaction2.replace(R.id.website_fragment_container,websiteFragment, TAG_LANDMARK_WEBSITE_FRAGMENT);
+
+                // Add this FragmentTransaction to the backstack
+                fragmentTransaction2.addToBackStack(null);
+
+                // Commit the FragmentTransaction
+                fragmentTransaction2.commit();
+
+                // Force Android to execute the committed FragmentTransaction
+                fragmentManager.executePendingTransactions();
+            }
+        });
+        setLayout() ;
+    }
+
+    private void setLayout() {
+
+        // Determine whether the web fragment has been added
+        if (!websiteFragment.isAdded()) {
+
+            // Make the list fragment occupy the entire layout
+            listFragmentLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                    MATCH_PARENT, MATCH_PARENT));
+            webFragmentLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+                    MATCH_PARENT));
+        } else {
+
+            // Make the list take 1/3 of the layout's width
+            listFragmentLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+                    MATCH_PARENT, 1f));
+
+            // Make the webview take 2/3's of the layout's width
+            webFragmentLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+                    MATCH_PARENT, 2f));
+        }
+    }
+
+    public void onStart() {
+        super.onStart();
+
+        //set layout and show webview when fragments were retained after configuration change
+        setLayout();
+        websiteFragment.showWebViewIndex(landmarkListFragment.mCurrIdx);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        super.onCreateOptionsMenu(menu);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+
+        return true;
+    }
+
+    // Listener for options menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        //check which item was clicked from options menu and execute respective process
+        switch (item.getItemId()) {
+
+            case R.id.landmarks:
+                Log.d("Menu", "This is landmark option");
+                Intent intent1 = new Intent(this, LandmarkActivity.class);
+                startActivity(intent1);
+                return true;
+
+            case R.id.restaurants:
+                Log.d("Menu", "This is restaurant option");
+
+                Intent intent2 = new Intent(this, RestaurantActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.home: {
+                Intent intent3 = new Intent(LandmarkActivity.this, MainActivity.class);
+                startActivity(intent3);
+                return true;
+            }
+
+
+            default:
+                return false;
+        }
+
+    }
+
+
+
+
+
+}
