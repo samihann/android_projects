@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">MovieCentral_Sam</string>
+
+    <string-array name="complete">
+        <item>Marvel Studios Thor: Love and Thunder-Taika Waitit-https://www.youtube.com/watch?v=tgB1wUcmbbw</item>
+        <item>Marvel Studios Avengers: Endgame-Russo brothers-https://www.youtube.com/watch?v=TcMBFSGVi1c</item>
+        <item>Obi Wan Kenobi-Deborah-https://www.youtube.com/watch?v=gEuirQWecEw</item>
+        <item>Jurassic World Dominion-Colin Trevorrow-https://www.youtube.com/watch?v=fb5ELWi-ekk</item>
+        <item>Top Gun: Maverick-Joseph Kosinski-https://www.youtube.com/watch?v=giXco2jaZ_4</item>
+        <item>Lightyear-Angus MacLane-https://www.youtube.com/watch?v=wHBBoUtJHhA</item>
+    </string-array>
+
+    <string-array name="name">
+        <item>Marvel Studios Thor: Love and Thunder</item>
+        <item>Marvel Studios Avengers: Endgame</item>
+        <item>Obi-Wan Kenobi</item>
+        <item>Jurassic World Dominion</item>
+        <item>Top Gun: Maverick</item>
+        <item>Lightyear</item>
+    </string-array>
+
+    <string-array name="director">
+        <item>Taika Waitit</item>
+        <item>Russo brothers</item>
+        <item>Deborah Chow</item>
+        <item>Colin Trevorrow</item>
+        <item>Joseph Kosinski</item>
+        <item>Angus MacLane</item>
+    </string-array>
+
+    <string-array name="url">
+        <item>https://www.youtube.com/watch?v=tgB1wUcmbbw</item>
+        <item>https://www.youtube.com/watch?v=TcMBFSGVi1c</item>
+        <item>https://www.youtube.com/watch?v=TWTfhyvzTx0</item>
+        <item>https://www.youtube.com/watch?v=fb5ELWi-ekk</item>
+        <item>https://www.youtube.com/watch?v=giXco2jaZ_4</item>
+        <item>https://www.youtube.com/watch?v=wHBBoUtJHhA</item>
+    </string-array>
+
+
+</resources>
